@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфоліо - Гуляр Ярослав</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F5F7FA;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 60px; /* Відступ для фіксованої навігації */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0057B7 0%, #FFD700 100%);
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        header .cta-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #0288D1, #03A9F4);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #03A9F4, #0288D1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: pulse 0.3s;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        nav {
+            background: #fff;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 300;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #003087;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        section {
+            padding: 40px 0; /* Компактні секції */
+        }
+
+        #about {
+            padding-top: 100px; /* Запобігання перекриттю */
+        }
+
+        h2 {
+            font-size: 2.5em;
+            font-weight: 600;
+            color: #003087;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .profile-photo {
+            max-width: 200px;
+            border-radius: 50%;
+            border: 3px solid #0288D1;
+            display: block;
+            margin: 0 auto 20px;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 20px auto 0;
+        }
+
+        .skill {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            color: #003087;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .skill:hover {
+            background: linear-gradient(135deg, #0288D1, #03A9F4);
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .experience {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .experience-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-item h3 {
+            color: #003087;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+        }
+
+        .experience-item .period {
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .experience-item p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .experience-item .more-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: linear-gradient(135deg, #FFCA28, #FFD700);
+            color: #212121;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item .more-button:hover {
+            background: linear-gradient(135deg, #FFD700, #FFCA28);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: pulse 0.3s;
+        }
+
+        .contact {
+            background: #E3F2FD;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .contact-item span {
+            font-size: 1.8em;
+            color: #003087;
+        }
+
+        .contact-item a {
+            color: #003087;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #FFD700;
+        }
+
+        .contact-item .contact-button {
+            padding: 8px 15px;
+            background: linear-gradient(135deg, #0288D1, #03A9F4);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item .contact-button:hover {
+            background: linear-gradient(135deg, #03A9F4, #0288D1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: pulse 0.3s;
+        }
+
+        footer {
+            background: #212121;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: #FFD700;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #03A9F4;
+        }
+
+        .scroll-top {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #FFCA28, #FFD700);
+            color: #212121;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top:hover {
+            background: linear-gradient(135deg, #FFD700, #FFCA28);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: pulse 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header .subtitle {
+                font-size: 1em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                padding: 10px 0;
+            }
+
+            #about {
+                padding-top: 120px;
+            }
+
+            h2 {
+                font-size: 2.2em;
+            }
+
+            .profile-photo {
+                max-width: 150px;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">Про мене</a></li>
+            <li><a href="#skills">Навички</a></li>
+            <li><a href="#experience">Досвід</a></li>
+            <li><a href="#contact">Контакти</a></li>
+            <li><a href="#resume">Резюме</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>⚡ Гуляр Ярослав</h1>
+            <p class="subtitle">Інженер-електрик | Спеціаліст з електроенергетики</p>
+            <div class="cta-buttons">
+                <a href="#about" class="cta-button">Дізнатися більше</a>
+                <a href="#experience" class="cta-button">Мій досвід</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>Про мене</h2>
+            <div class="about-content">
+                <img class="profile-photo" src="https://via.placeholder.com/200" alt="Фото профілю">
+                <p>Привіт! Я Гуляр Ярослав, професійний інженер-електрик із досвідом у проектуванні електромереж, релейному захисті та відновлювальних джерелах енергії.</p>
+                <p>Моя мета — створювати ефективні та сучасні енергетичні рішення, які сприяють сталому розвитку.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Навички</h2>
+            <div class="skills">
+                <div class="skill">Електротехніка</div>
+                <div class="skill">Релейний захист</div>
+                <div class="skill">Автоматизація</div>
+                <div class="skill">AutoCAD Electrical</div>
+                <div class="skill">SCADA</div>
+                <div class="skill">EPLAN</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Досвід роботи</h2>
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <h3>Провідний інженер-електрик</h3>
+                    <span class="period">2020 - дотепер | Назва компанії</span>
+                    <p>Керівництво проєктами модернізації електросистем, розробка технічних рішень, впровадження РЗА та SCADA.</p>
+                    <a href="#" class="more-button">Дізнатися більше</a>
+                </div>
+                <div class="experience-item">
+                    <h3>Інженер з релейного захисту</h3>
+                    <span class="period">2017 - 2020 | Назва компанії</span>
+                    <p>Налаштування РЗА на підстанціях 35-110 кВ, проведення випробувань, аналіз аварійних режимів.</p>
+                    <a href="#" class="more-button">Дізнатися більше</a>
+                </div>
+                <div class="experience-item">
+                    <h3>Інженер-проектувальник</h3>
+                    <span class="period">2015 - 2017 | Назва компанії</span>
+                    <p>Проектування систем електропостачання, розрахунок навантажень, розробка схем.</p>
+                    <a href="#" class="more-button">Дізнатися більше</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Контакти</h2>
+            <p>Зацікавлені у співпраці? Напишіть мені!</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:email@example.com">email@example.com</a>
+                    <a href="mailto:email@example.com" class="contact-button">Написати</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <a href="tel:+380000000000">+380 XX XXX XX XX</a>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" style="display: none;">
+        <!-- Заглушка для резюме, можна замінити на PDF або контент -->
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Гуляр Ярослав. Всі права захищені.</p>
+            <div class="social-links">
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+            </div>
+            <a href="#" class="scroll-top">Вгору</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.skill, .experience-item, .contact-item, .about-content, .profile-photo');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            animatedElements.forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
